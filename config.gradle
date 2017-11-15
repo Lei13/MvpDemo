@@ -1,0 +1,26 @@
+ext {
+    android = [
+            applicationId   : "com.lei.demo.ts",
+            minSdkVersion   : 16,
+            targetSdkVersion: 25,
+            versionCode     : 1,
+            versionName     : "1.0"
+
+    ]
+
+    def rxAndroid_version = "2.0.1";
+    def rxJava_version = "2.1.5";
+
+    dependencies = [
+            "rxandroid"             : "io.reactivex.rxjava2:rxandroid:${rxAndroid_version}",
+            "rxjava"                : "io.reactivex.rxjava2:rxjava:${rxJava_version}",
+            "dagger"                : "com.google.dagger:dagger:2.0",
+            "daggerCompiler"        : "com.google.dagger:dagger-compiler:2.0",
+            "retrofit"              : "com.squareup.retrofit2:retrofit:2.3.0",
+            "retrofit-adapter"      : "com.squareup.retrofit2:adapter-rxjava2:2.3.0",
+            "retrofit-gson"         : "com.squareup.retrofit2:converter-gson:2.3.0",
+            "butterknife"           : "com.jakewharton:butterknife:8.8.1",
+            "butterknife-annotation": "com.jakewharton:butterknife-compiler:8.8.1",
+    ]
+
+}
