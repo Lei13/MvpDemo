@@ -7,5 +7,6 @@ package com.lei.base.compoment;
  * @contact email:907238552@qq.com
  */
 
-public interface IComponent {
+public interface IComponent<T>{
+    void inject(T o);
 }

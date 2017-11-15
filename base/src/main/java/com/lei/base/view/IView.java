@@ -1,4 +1,4 @@
-package com.lei.base;
+package com.lei.base.view;
 
 /**
  * @author LeiYan
@@ -7,6 +7,5 @@ package com.lei.base;
  * @contact email:907238552@qq.com
  */
 
-public class BaseConfig {
-    public static String BASE_URL = "";
+public interface IView {
 }

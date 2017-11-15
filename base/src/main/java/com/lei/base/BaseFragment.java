@@ -7,6 +7,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import butterknife.ButterKnife;
+
 /**
  * @author LeiYan
  * @describe
@@ -16,13 +18,18 @@ import android.view.ViewGroup;
 
 public abstract class BaseFragment extends Fragment implements IView {
 
-    protected View mRootView;
+    protected ViewGroup mRootView;
     protected LayoutInflater mLayoutInflater;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        mRootView = mLayoutInflater.inflate(getLayoutId(), container, false);
+        mLayoutInflater = inflater;
+        if (mRootView != null) {
+            return mRootView;
+        }
+        mRootView = (ViewGroup) mLayoutInflater.inflate(getLayoutId(), container, false);
+        ButterKnife.bind(this, mRootView);
         initView();
         return mRootView;
     }
@@ -30,7 +37,6 @@ public abstract class BaseFragment extends Fragment implements IView {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mLayoutInflater = LayoutInflater.from(getActivity());
         initIntent();
     }
 

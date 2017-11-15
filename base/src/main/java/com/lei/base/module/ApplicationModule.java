@@ -1,6 +1,7 @@
 package com.lei.base.module;
 
 import com.google.gson.internal.bind.JsonAdapterAnnotationTypeAdapterFactory;
+import com.lei.base.BaseConfig;
 
 import javax.inject.Singleton;
 
@@ -29,6 +30,7 @@ public class ApplicationModule {
         return new Retrofit.Builder()
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .addConverterFactory(GsonConverterFactory.create())
+                .baseUrl(BaseConfig.BASE_URL)
                 .client(provideOkHttpClient())
                 .build();
     }
@@ -36,6 +38,7 @@ public class ApplicationModule {
     @Provides
     @Singleton
     OkHttpClient provideOkHttpClient() {
-        return new OkHttpClient.Builder().build();
+        return new OkHttpClient.Builder()
+                .build();
     }
 }
