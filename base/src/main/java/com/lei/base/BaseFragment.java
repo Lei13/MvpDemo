@@ -26,6 +26,9 @@ public abstract class BaseFragment extends Fragment implements IView {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         mLayoutInflater = inflater;
         if (mRootView != null) {
+            if (mRootView.getParent() != null){
+                ((ViewGroup) mRootView.getParent()).removeView(mRootView);
+            }
             return mRootView;
         }
         mRootView = (ViewGroup) mLayoutInflater.inflate(getLayoutId(), container, false);

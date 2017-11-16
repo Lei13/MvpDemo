@@ -8,5 +8,5 @@ package com.lei.base;
  */
 
 public class BaseConfig {
-    public static String BASE_URL = "";
+    public static String BASE_URL = "http://demo.thinksns.com/ts4/api.php";
 }

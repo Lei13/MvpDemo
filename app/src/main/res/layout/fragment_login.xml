@@ -11,6 +11,7 @@
         android:layout_margin="20dp">
 
         <EditText
+            android:id="@+id/et_account"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="account"/>
@@ -22,6 +23,7 @@
         android:layout_margin="20dp">
 
         <EditText
+            android:id="@+id/et_password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="password"/>

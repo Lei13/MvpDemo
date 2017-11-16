@@ -3,6 +3,7 @@ package com.lei.base.module;
 import com.google.gson.internal.bind.JsonAdapterAnnotationTypeAdapterFactory;
 import com.lei.base.BaseConfig;
 
+import javax.inject.Inject;
 import javax.inject.Singleton;
 
 import dagger.Module;
@@ -21,24 +22,23 @@ import retrofit2.converter.gson.GsonConverterFactory;
 @Module
 public class ApplicationModule {
 
-    public ApplicationModule() {
+    @Provides
+    public OkHttpClient provideOkHttpClient() {
+        return new OkHttpClient.Builder()
+                .build();
     }
+
 
     @Provides
     @Singleton
-    Retrofit provideRetrofit() {
+    public Retrofit provideRetrofit(OkHttpClient client) {
         return new Retrofit.Builder()
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .addConverterFactory(GsonConverterFactory.create())
                 .baseUrl(BaseConfig.BASE_URL)
-                .client(provideOkHttpClient())
+                .client(client)
                 .build();
     }
 
-    @Provides
-    @Singleton
-    OkHttpClient provideOkHttpClient() {
-        return new OkHttpClient.Builder()
-                .build();
-    }
+
 }

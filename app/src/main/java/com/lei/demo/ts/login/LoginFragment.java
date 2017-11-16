@@ -2,6 +2,7 @@ package com.lei.demo.ts.login;
 
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 
 import com.lei.base.BaseFragment;
 import com.lei.base.util.ToastUtils;
@@ -26,6 +27,10 @@ public class LoginFragment extends BaseFragment implements LoginContact.View {
     LoginPresenter mPresenter;
     @BindView(R.id.btn_login)
     Button mBtnLogin;
+    @BindView(R.id.et_account)
+    EditText mEtAccount;
+    @BindView(R.id.et_password)
+    EditText mEtPassword;
 
     @Override
     public int getLayoutId() {
@@ -39,7 +44,6 @@ public class LoginFragment extends BaseFragment implements LoginContact.View {
 
     @Override
     public void initView() {
-        ToastUtils.show(String.valueOf(mBtnLogin) + "  " + String.valueOf(mPresenter));
     }
 
     @Override
@@ -51,7 +55,7 @@ public class LoginFragment extends BaseFragment implements LoginContact.View {
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.btn_login:
-                ToastUtils.show(String.valueOf(mPresenter));
+                mPresenter.doLogin(mEtAccount.getText().toString(), mEtPassword.getText().toString());
                 break;
         }
     }

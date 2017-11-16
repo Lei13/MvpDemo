@@ -1,5 +1,4 @@
 apply plugin: 'com.android.application'
-apply plugin: 'com.jakewharton.butterknife'
 
 android {
     compileSdkVersion 25
@@ -34,4 +33,5 @@ dependencies {
     provided 'javax.annotation:javax.annotation-api:1.2'
     //
     compile rootProject.ext.dependencies["butterknife"]
+    annotationProcessor rootProject.ext.dependencies["butterknife-annotation"]
 }

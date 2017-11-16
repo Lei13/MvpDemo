@@ -1,10 +1,14 @@
 package com.lei.demo.ts.login;
 
+import android.widget.Button;
+
 import com.lei.base.BaseActivity;
 import com.lei.demo.ts.R;
 import com.lei.demo.ts.login.constract.DaggerLoginComponent;
 import com.lei.demo.ts.login.constract.LoginContact;
 import com.lei.demo.ts.login.constract.LoginModule;
+
+import butterknife.BindView;
 
 /**
  * @author LeiYan
