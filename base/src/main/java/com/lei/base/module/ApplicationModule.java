@@ -1,10 +1,8 @@
 package com.lei.base.module;
 
-import com.google.gson.internal.bind.JsonAdapterAnnotationTypeAdapterFactory;
 import com.lei.base.BaseConfig;
-import com.lei.base.RequestIntercept;
+import com.lei.base.http.RequestIntercept;
 
-import javax.inject.Inject;
 import javax.inject.Singleton;
 
 import dagger.Module;
