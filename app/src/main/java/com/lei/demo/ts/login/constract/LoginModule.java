@@ -1,10 +1,12 @@
 package com.lei.demo.ts.login.constract;
 
 import com.lei.base.module.IModule;
+import com.lei.base.scope.ActivityScope;
 import com.lei.demo.ts.login.LoginPresenter;
 
 import dagger.Module;
 import dagger.Provides;
+import retrofit2.Retrofit;
 
 /**
  * @author LeiYan
@@ -21,8 +23,17 @@ public class LoginModule extends IModule {
         this.mView = view;
     }
 
+    @ActivityScope
     @Provides
-    LoginPresenter provideLoginPresenter() {
-        return new LoginPresenter(mView);
+    ILoginService provideILoginService(Retrofit retrofit) {
+        return retrofit.create(ILoginService.class);
     }
+
+    @ActivityScope
+    @Provides
+    LoginPresenter provideLoginPresenter(ILoginService service) {
+        return new LoginPresenter(mView, service);
+    }
+
+
 }

@@ -2,6 +2,7 @@ package com.lei.base.module;
 
 import com.google.gson.internal.bind.JsonAdapterAnnotationTypeAdapterFactory;
 import com.lei.base.BaseConfig;
+import com.lei.base.RequestIntercept;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
@@ -23,15 +24,23 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class ApplicationModule {
 
     @Provides
-    public OkHttpClient provideOkHttpClient() {
+    @Singleton
+    RequestIntercept provideRequestIntercept() {
+        return new RequestIntercept();
+    }
+
+    @Provides
+    @Singleton
+    OkHttpClient provideOkHttpClient(RequestIntercept intercept) {
         return new OkHttpClient.Builder()
+                .addInterceptor(intercept)
                 .build();
     }
 
 
     @Provides
     @Singleton
-    public Retrofit provideRetrofit(OkHttpClient client) {
+    Retrofit provideRetrofit(OkHttpClient client) {
         return new Retrofit.Builder()
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .addConverterFactory(GsonConverterFactory.create())

@@ -26,15 +26,30 @@ public class BaseApplication extends Application {
     @Inject
     OkHttpClient mOkHttpClient;
     private static BaseApplication sBaseApplication;
-
+    private static ApplicationComponent mApplicationComponent;
     @Override
     public void onCreate() {
         super.onCreate();
         sBaseApplication = this;
-        DaggerApplicationComponent.builder().applicationModule(new ApplicationModule()).build().inject(this);
+        mApplicationComponent = DaggerApplicationComponent.builder().applicationModule(new ApplicationModule()).build();
+        mApplicationComponent.inject(this);
     }
 
     public static BaseApplication getApplication() {
         return sBaseApplication;
     }
+
+    public static ApplicationComponent getApplicationComponent(){
+        return mApplicationComponent;
+    }
+
+    public Retrofit getRetrofit() {
+        return mRetrofit;
+    }
+
+
+    public OkHttpClient getOkHttpClient() {
+        return mOkHttpClient;
+    }
+
 }

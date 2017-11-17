@@ -4,7 +4,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.lei.base.BaseApplication;
 import com.lei.base.BaseFragment;
+import com.lei.base.util.LogUtils;
 import com.lei.base.util.ToastUtils;
 import com.lei.demo.ts.R;
 import com.lei.demo.ts.login.constract.LoginContact;
@@ -55,6 +57,7 @@ public class LoginFragment extends BaseFragment implements LoginContact.View {
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.btn_login:
+//                LogUtils.e("", "on", String.valueOf(BaseApplication.getApplication().getRetrofit()));
                 mPresenter.doLogin(mEtAccount.getText().toString(), mEtPassword.getText().toString());
                 break;
         }

@@ -1,19 +1,13 @@
 package com.lei.demo.ts;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.Button;
 
 import com.lei.base.BaseActivity;
-import com.lei.base.compoment.DaggerApplicationComponent;
-import com.lei.base.module.ApplicationModule;
 import com.lei.demo.ts.login.LoginActivity;
 
-import javax.inject.Inject;
-
 import butterknife.BindView;
-import retrofit2.Retrofit;
 
 public class MainActivity extends BaseActivity {
 
@@ -42,6 +36,6 @@ public class MainActivity extends BaseActivity {
     @Override
     public void initData() {
         if (btn != null)
-        startActivity(new Intent(this, LoginActivity.class));
+            startActivity(new Intent(this, LoginActivity.class));
     }
 }

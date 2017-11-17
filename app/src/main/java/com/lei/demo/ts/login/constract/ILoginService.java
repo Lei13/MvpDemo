@@ -24,7 +24,6 @@ public interface ILoginService {
      * @param password
      * @return
      */
-    @FormUrlEncoded
-    @GET("?mod=Oauth&act=authorize")
+    @GET("ts4/api.php?mod=Oauth&act=authorize")
     Observable<LoginBean> login(@Query("login") String accountName, @Query("password") String password);
 }

@@ -10,19 +10,26 @@ import javax.inject.Singleton;
 
 import dagger.Component;
 import dagger.Module;
+import okhttp3.OkHttpClient;
+import retrofit2.Retrofit;
 
 /**
  * @author LeiYan
  * @describe
  * @date 2017/11/15
  * @contact email:907238552@qq.com
- */@Singleton
+ */
+@Singleton
 @Component(modules = ApplicationModule.class)
 public interface ApplicationComponent {
     /**
      * 注入
+     *
      * @param application
      */
     void inject(Application application);
 
+//    OkHttpClient okHttpClient();
+//
+    Retrofit retrofit();
 }

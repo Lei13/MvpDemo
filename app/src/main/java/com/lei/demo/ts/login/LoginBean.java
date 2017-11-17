@@ -19,6 +19,7 @@ public class LoginBean implements Serializable {
      * }
      */
     public String oauth_token;
+    public String msg;
     public String oauth_token_secret;
     public long uid;
     public int status;
