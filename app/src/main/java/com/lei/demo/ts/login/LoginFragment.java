@@ -1,5 +1,6 @@
 package com.lei.demo.ts.login;
 
+import android.content.Intent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -9,6 +10,7 @@ import com.lei.base.BaseFragment;
 import com.lei.base.util.LogUtils;
 import com.lei.base.util.ToastUtils;
 import com.lei.demo.ts.R;
+import com.lei.demo.ts.TestActivity;
 import com.lei.demo.ts.login.constract.LoginContact;
 
 import javax.inject.Inject;
@@ -57,9 +59,22 @@ public class LoginFragment extends BaseFragment implements LoginContact.View {
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.btn_login:
+                createShortCut();
 //                LogUtils.e("", "on", String.valueOf(BaseApplication.getApplication().getRetrofit()));
-                mPresenter.doLogin(mEtAccount.getText().toString(), mEtPassword.getText().toString());
+//                mPresenter.doLogin(mEtAccount.getText().toString(), mEtPassword.getText().toString());
                 break;
         }
+    }
+    public void createShortCut(){
+        Intent intent1 = new Intent(getActivity(), TestActivity.class);
+        intent1.setAction(Intent.ACTION_MAIN);
+        intent1.addCategory(Intent.CATEGORY_LAUNCHER);
+
+        Intent intent = new Intent("com.android.launcher.action.INSTALL_SHORTCUT");
+        intent.putExtra(Intent.EXTRA_SHORTCUT_NAME,"test_");
+        intent.putExtra(Intent.EXTRA_SHORTCUT_ICON, R.mipmap.ic_launcher_round);
+        intent.putExtra(Intent.EXTRA_SHORTCUT_INTENT, intent1);
+        getActivity().sendBroadcast(intent);
+
     }
 }

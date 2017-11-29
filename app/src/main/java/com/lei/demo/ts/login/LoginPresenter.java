@@ -1,11 +1,14 @@
 package com.lei.demo.ts.login;
 
+import android.content.Intent;
 import android.util.Log;
 
+import com.lei.base.BaseApplication;
 import com.lei.base.presenter.BasePresenter;
 import com.lei.base.util.LogUtils;
 import com.lei.base.util.ToastUtils;
 import com.lei.base.view.IView;
+import com.lei.demo.ts.TestActivity;
 import com.lei.demo.ts.login.constract.ILoginService;
 
 import javax.inject.Inject;
